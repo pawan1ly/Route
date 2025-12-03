@@ -756,7 +756,7 @@
       function dmsToLatLng(latDMS, lonDMS) {
         return [convertDMSToDecimal(latDMS), convertDMSToDecimal(lonDMS)];
       }
-
+/*
       // --- Base map layer (Esri World Street Map) ---
       const baseMapLayer = L.tileLayer(
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
@@ -766,7 +766,29 @@
           opacity: 0.7, // Adjust transparency here
         }
       );
+*/
+// Basemap layer with required Esri attribution
+const baseMapLayer = L.tileLayer(
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+  {
+    attribution:
+      '© <a href="https://www.esri.com/">Esri</a>, ' +
+      '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+      'and the GIS User Community',
+    maxZoom: 19,
+    opacity: 0.7
+  }
+);
 
+// Create the map
+const map = L.map("map", {
+  attributionControl: true // ensures the attribution box shows
+}).setView([0, 0], 3);
+
+// Add the basemap
+baseMapLayer.addTo(map);
+
+      
       //----------------main map border coordinates--------------------------
       const rawCoords = [
         ["262100N", "0560600E"],
