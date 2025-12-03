@@ -780,13 +780,7 @@ const baseMapLayer = L.tileLayer(
   }
 );
 
-// Create the map
-const map = L.map("map", {
-  attributionControl: true // ensures the attribution box shows
-}).setView([0, 0], 3);
 
-// Add the basemap
-baseMapLayer.addTo(map);
 
       
       //----------------main map border coordinates--------------------------
@@ -3934,7 +3928,7 @@ const sectFreq = [
       // map  zoom rate--------------------------
       const map = L.map("map", {
         zoomControl: false,
-        attributionControl: false,
+        attributionControl: true,
         scrollWheelZoom: true,
         wheelPxPerZoomLevel: 100, // <-- Increase this for smoother zoom
         zoomSnap: 0, //  allow fractional zoom
@@ -3942,6 +3936,10 @@ const sectFreq = [
         //doubleClickZoom: false
       }).setView(latlngs[0], 7);
 
+
+// Add the basemap
+baseMapLayer.addTo(map);
+      
       //-------------------------------------
       //let extraLabelMarkers = [];
 
